@@ -3,6 +3,8 @@
  */
 package twitter;
 
+import java.time.Instant;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -24,7 +26,11 @@ public class Extract {
      *         every tweet in the list.
      */
     public static Timespan getTimespan(List<Tweet> tweets) {
-        throw new RuntimeException("not implemented");
+    	System.out.println("hahhahaha");
+    	Instant first=tweets.get(0).getTimestamp();
+    	Instant last=tweets.get(tweets.size()-1).getTimestamp();
+    	Timespan timeperiod = new Timespan(last,first);
+        return timeperiod;
     }
 
     /**
@@ -43,7 +49,30 @@ public class Extract {
      *         include a username at most once.
      */
     public static Set<String> getMentionedUsers(List<Tweet> tweets) {
-        throw new RuntimeException("not implemented");
-    }
+    	  Set<String> tags = new HashSet<String>();
+          
+          
+          
+          for(int i=0; i<tweets.size(); i++){
+          	
+          String text = tweets.get(i).getText();
+          
+          String[] tag = text.split(" ");
+          
+          for(int j=0; j<tag.length; j++){
+          if(tag[j].contains("@")&&tag[j].indexOf('@')==0){
+          		
+          		tags.add(tag[j]);
+          	
+          	
+          		}
+          	}
+          }
+          
+          
+          System.out.println(tags);
+          
+          return tags;  
+          }
 
 }

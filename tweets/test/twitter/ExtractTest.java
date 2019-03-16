@@ -32,7 +32,7 @@ public class ExtractTest {
     
     @Test
     public void testGetTimespanTwoTweets() {
-        Timespan timespan = Extract.getTimespan(Arrays.asList(tweet1, tweet2));
+        Timespan timespan = Extract.getTimespan(Arrays.asList(tweet2, tweet1));
         
         assertEquals("expected start", d1, timespan.getStart());
         assertEquals("expected end", d2, timespan.getEnd());
@@ -40,7 +40,7 @@ public class ExtractTest {
     
     @Test
     public void testGetMentionedUsersNoMention() {
-        Set<String> mentionedUsers = Extract.getMentionedUsers(Arrays.asList(tweet1));
+        Set<String> mentionedUsers = Extract.getMentionedUsers(Arrays.asList(tweet1, tweet2));
         
         assertTrue("expected empty set", mentionedUsers.isEmpty());
     }
